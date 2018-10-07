@@ -7,7 +7,7 @@
 $('#button-confirm').on('click', function() {
 	$.ajax({
 		type: 'get',
-		url: 'index.php?route=extension/payment/cod1/confirm',
+		url: 'index.php?route=extension/payment/cod2/confirm',
 		cache: false,
 		beforeSend: function() {
 			$('#button-confirm').button('loading');

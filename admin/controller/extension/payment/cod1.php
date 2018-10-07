@@ -1,16 +1,16 @@
 <?php
-class ControllerExtensionPaymentCod1 extends Controller {
+class ControllerExtensionPaymentCod2 extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('extension/payment/cod1');
+		$this->load->language('extension/payment/cod2');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('cod1', $this->request->post);
+			$this->model_setting_setting->editSetting('cod2', $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -55,60 +55,60 @@ class ControllerExtensionPaymentCod1 extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('extension/payment/cod1', 'token=' . $this->session->data['token'], true)
+			'href' => $this->url->link('extension/payment/cod2', 'token=' . $this->session->data['token'], true)
 		);
 
-		$data['action'] = $this->url->link('extension/payment/cod1', 'token=' . $this->session->data['token'], true);
+		$data['action'] = $this->url->link('extension/payment/cod2', 'token=' . $this->session->data['token'], true);
 
 		$data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=payment', true);
 
-		if (isset($this->request->post['cod1_total'])) {
-			$data['cod1_total'] = $this->request->post['cod1_total'];
+		if (isset($this->request->post['cod2_total'])) {
+			$data['cod2_total'] = $this->request->post['cod2_total'];
 		} else {
-			$data['cod1_total'] = $this->config->get('cod1_total');
+			$data['cod2_total'] = $this->config->get('cod2_total');
 		}
 
-		if (isset($this->request->post['cod1_order_status_id'])) {
-			$data['cod1_order_status_id'] = $this->request->post['cod1_order_status_id'];
+		if (isset($this->request->post['cod2_order_status_id'])) {
+			$data['cod2_order_status_id'] = $this->request->post['cod2_order_status_id'];
 		} else {
-			$data['cod1_order_status_id'] = $this->config->get('cod1_order_status_id');
+			$data['cod2_order_status_id'] = $this->config->get('cod2_order_status_id');
 		}
 
 		$this->load->model('localisation/order_status');
 
 		$data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
-		if (isset($this->request->post['cod1_geo_zone_id'])) {
-			$data['cod1_geo_zone_id'] = $this->request->post['cod1_geo_zone_id'];
+		if (isset($this->request->post['cod2_geo_zone_id'])) {
+			$data['cod2_geo_zone_id'] = $this->request->post['cod2_geo_zone_id'];
 		} else {
-			$data['cod1_geo_zone_id'] = $this->config->get('cod1_geo_zone_id');
+			$data['cod2_geo_zone_id'] = $this->config->get('cod2_geo_zone_id');
 		}
 
 		$this->load->model('localisation/geo_zone');
 
 		$data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 
-		if (isset($this->request->post['cod1_status'])) {
-			$data['cod1_status'] = $this->request->post['cod1_status'];
+		if (isset($this->request->post['cod2_status'])) {
+			$data['cod2_status'] = $this->request->post['cod2_status'];
 		} else {
-			$data['cod1_status'] = $this->config->get('cod1_status');
+			$data['cod2_status'] = $this->config->get('cod2_status');
 		}
 
-		if (isset($this->request->post['cod1_sort_order'])) {
-			$data['cod1_sort_order'] = $this->request->post['cod1_sort_order'];
+		if (isset($this->request->post['cod2_sort_order'])) {
+			$data['cod2_sort_order'] = $this->request->post['cod2_sort_order'];
 		} else {
-			$data['cod1_sort_order'] = $this->config->get('cod1_sort_order');
+			$data['cod2_sort_order'] = $this->config->get('cod2_sort_order');
 		}
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('extension/payment/cod1', $data));
+		$this->response->setOutput($this->load->view('extension/payment/cod2', $data));
 	}
 
 	protected function validate() {
-		if (!$this->user->hasPermission('modify', 'extension/payment/cod1')) {
+		if (!$this->user->hasPermission('modify', 'extension/payment/cod2')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 

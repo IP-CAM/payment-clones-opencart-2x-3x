@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']					= 'Оплата при доставке 1';
+$_['heading_title']					= 'Оплата при доставке 2';
 
 // Text
 $_['text_extension']	 			= 'Платежи';
